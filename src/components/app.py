@@ -55,7 +55,7 @@ class App(QMainWindow):
 
 
         # * Assign the actions to the menu bar
-        # self.assign_actions()  # Set all the actions to their respective elements to apply the logic
+        self.assign_actions()  # Set all the actions to their respective elements to apply the logic
 
 
     # def _set_color_scheme(self, schema: str = 'default'):
@@ -94,19 +94,15 @@ class App(QMainWindow):
             print(f"\033[31m{e}\x1B[37m")
 
 
-    # def assign_actions(self):
-    #     """
-    #     Assign the actions to the menu bar
-    #     """
-    #     # [print(menu.title()) for menu in self.menu_bar.findChildren(QMenu)]  # print the title of the menus
-    #     # * Get the actions of the menu bar
-    #     qactions = list(filter(lambda x: x.text() != "", self.menu_bar.findChildren(QAction)))
-    #     # [print(action.text()) for action in qactions]  # print the text of the actions
+    def assign_actions(self):
+        """
+        Assign the actions to the menu bar
+        """
+        # [print(menu.title()) for menu in self.menu_bar.findChildren(QMenu)]  # print the title of the menus
+        # * Get the actions of the menu bar
+        qactions = list(filter(lambda x: x.text() != "", self.menu_bar.findChildren(QAction)))
+        # [print(action.text()) for action in qactions]  # print the text of the actions
 
-    #     # * Add the behavior to the actions
-    #     # LOAD IMAGE
-    #     qactions[1].triggered.connect(lambda: self.display.workspace.v_list[self.display.workspace.currentIndex()].selected_image.import_image())
-    #     # REMOVE IMAGE
-    #     qactions[2].triggered.connect(lambda: self.display.workspace.v_list[self.display.workspace.currentIndex()].selected_image.remove_image())
-    #     # SAVE IMAGE
-    #     qactions[3].triggered.connect(lambda: self.display.workspace.v_list[0].save_image())
+        # * Add the behavior to the actions
+        # open a new file
+        qactions[1].triggered.connect(lambda: self.display.workspace.v_list[self.display.workspace.currentIndex()].open_file())

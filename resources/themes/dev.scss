@@ -174,34 +174,8 @@ QTabWidget::pane {  // this also belongs to the .workspace_tabs class but it doe
     // * This variable repesents the the color of the border
     // * It's only visible when the visualizer is empty
     // * Or if the "border" lenght is > 0
-    border: 1px solid $light_accent_contr;
+    // border: 1px solid $light_accent_contr;
     // border-radius: 10%;
-}
-
-
-// * Image Buffer
-.image_buffer
-{
-    background-color: rgba(255, 255, 255, 0.2);
-    border: 1px solid $light_accent_contr;
-    border-radius: 10%;
-}
-
-.import_button,
-.replace_button,
-.remove_button
-{
-    background-color: $dark_base;
-    border: 1px solid $light_accent_contr;
-    border-radius: 10%;
-    color: $light_accent;
-}
-.image_buffer:hover,
-.import_button:hover,
-.replace_button:hover,
-.remove_button:hover
-{
-    border : 3px solid $light_accent_contr;
 }
 
 // ? ------------------------------------------------------------------------------------------
@@ -229,22 +203,3 @@ QTabWidget::pane {  // this also belongs to the .workspace_tabs class but it doe
     border: 2px solid $light_hard_contr;
     border-radius: 12%;
 }
-
-
-// * Loading Screen
-// .loading_screen {
-//     // border: 1px solid $light_accent_contr;
-//     border: 1px solid #FFD700;
-//     border-radius: 10px;
-//     text-align: center;
-//     // color: $light_accent;
-// }
-// todo: Look for a way to add this inside the App class
-// QProgressBar {  // this is also the from the loading screen but the style is set on app.py, not in main.py
-//     border: 1px solid #FFD700; 
-//     border-radius: 10px; 
-//     text-align: center;
-// } 
-//     QProgressBar::chunk {
-//     background-color: #FFD700;
-// }

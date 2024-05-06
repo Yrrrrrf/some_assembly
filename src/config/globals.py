@@ -32,8 +32,7 @@ class Assets(Enum):
     # * Probably not because of the backslash. It should be a forward slash
     # * So, I'll have to change it to a forward slash
     ICONS = "resources/img/static/"
-    TEST_IMAGES = "resources/img/test/"
-    TEMP_IMAGES = "resources/temp/"
+    ASM_DOCS = "resources/asm/"
     THEMES = "resources/themes/"
     COLOR_SCHEMA = "resources/colors/"
     

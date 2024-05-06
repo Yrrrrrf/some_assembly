@@ -27,7 +27,7 @@ class Display(QFrame):
         super().__init__()
         self.setProperty('class', 'display')
 
-        self.side_panel = SidePanel()
+        # self.side_panel = SidePanel()
         self.workspace = Workspace()
         
         layout = QGridLayout()  # ? Set the layout distribution
@@ -36,24 +36,12 @@ class Display(QFrame):
 
         self.setLayout(layout)
 
-        # Get the current selected tab
-        # print(self.workspace.currentIndex())
 
-        # get the visualizer of the current tab
-        # print(self.workspace.v_list[self.workspace.currentIndex()])
-
-        # Access to the workspace & save the image
-        # self.workspace.v_list[0].save_image()
-        # self.workspace.v_list[0].save_image('siuuuuuuuuuuu.png')
-
-
-    # * MANAGE ALL SHORTCUTS OF THE APPLICATION
+    # * Manage the shortcuts used in the display behavior (add & remove tabs, etc.)
     def keyPressEvent(self, event):
         event_mod = event.modifiers()  # *  is a var because it is used multiple times
         match event_mod:
             case Qt.KeyboardModifier.ControlModifier:
-                # print('Ctrl')
-                # print(event.key())
                 number = event.key() - 88 if event.key() == 94 else event.key() - 48
                 match number:
                     case 30:  # N  # * Create a new tab & go to it
@@ -61,22 +49,7 @@ class Display(QFrame):
                         self.workspace.setCurrentIndex(self.workspace.count() - 1)
                     case 39:  # W  # * Close the current tab
                         self.workspace._close_tab(self.workspace.currentIndex())
+
                     case _:  # * Go to the tab of the number
                         if number <= self.workspace.count():  # If the number is less than the number of tabs
                             self.workspace.setCurrentIndex(number - 1)  # Go to the tab of the number
-
-            # case Qt.KeyboardModifier.ShiftModifier:
-            #     print('Shift')
-
-            # case Qt.KeyboardModifier.AltModifier:
-            #     print('Alt')
-
-            # case Qt.KeyboardModifier.MetaModifier:
-            #     print('Meta')
-
-            # case Qt.KeyboardModifier.NoModifier:
-            #     print('No modifier')
-
-            # case _:
-            #     print(f'Other modifier {event.key()}')
-

@@ -29,8 +29,8 @@ class Workspace(QTabWidget):
         self.setProperty('class', 'workspace')
         self.setMovable(True)
         # self.setMouseTracking(True)
+
         # * New Tab button
-        # add_button = QPushButton(QIcon(Assets.ICONS.value+'sum.png'), '')
         add_button = QPushButton()
         add_button.clicked.connect(self._new_tab)
         add_button.setProperty('class', 'add_button')
@@ -47,7 +47,7 @@ class Workspace(QTabWidget):
         # print(self.v_list)
 
         # V is a Visualizer
-        # -> parent: QWidget: scroll_zone
+        # -> parent: QWidget: some_widget
         # -> parent: QScrollArea: scroll_area
         # -> parent: QStackedWidget
         # -> parent: Workspace (self)
@@ -61,33 +61,14 @@ class Workspace(QTabWidget):
         Also set the buttons of the image buffer's inside the visualizer.
         '''
         # * Instantiate the visualizer, the scroll zone & the scroll area
-        scroll_area = QScrollArea()
-        scroll_area.setProperty('class', 'scroll_area')
+        some_widget = QWidget()
+        
+        some_widget.setProperty('class', 'some_widget')
 
-        scroll_zone = QWidget()
-        scroll_zone.setProperty('class', 'scroll_zone')
-
-        visualizer = Visualizer(scroll_zone)
-
-        # * Set the visualizer to the center of the scroll zone
-        scroll_zone_margin: int = 480  # * Margin of the scroll zone (out border of the visualizer)
-        scroll_zone.setFixedSize(visualizer.width() + 2 * scroll_zone_margin, visualizer.height() + 2 * scroll_zone_margin)
-        visualizer.move(scroll_zone.width() // 2 - visualizer.width() // 2, scroll_zone.height() // 2 - visualizer.height() // 2)
-
-        # # * Add the visualizer to the scroll area
-        scroll_area.setWidget(scroll_zone)   # Set the scroll zone as the widget of the scroll area
-        scroll_area.setWidgetResizable(True)  # Make the scroll area resizable
-        scroll_area.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
-        scroll_area.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
-
-        # * Set the scroll area to the center of the tab
-        # initial_pos_margin: int = 32  # Visualizer initialized on (32, 32)
-        initial_pos_margin: int = 48  # Visualizer initialized on (48, 48)
-        scroll_area.verticalScrollBar().setValue(scroll_zone.height() // 2 - visualizer.height() // 2 - initial_pos_margin)  # type: ignore
-        scroll_area.horizontalScrollBar().setValue(scroll_zone.width() // 2 - visualizer.width() // 2 - initial_pos_margin)  # type: ignore
+        visualizer = Visualizer(some_widget)
 
         # * Add the scroll area to the tab widget
-        self.addTab(scroll_area, f'New_{self.count()+1}')
+        self.addTab(some_widget, f'New_{self.count()+1}')
         # * Add the visualizer to the list of visualizers
         self.v_list.append(visualizer)
 

@@ -10,6 +10,7 @@ from config.globals import Config
 from components.workspace import Workspace
 
 
+
 class MenuBar(QMenuBar):
     '''
     The MenuBar class represents the menu bar of the application.

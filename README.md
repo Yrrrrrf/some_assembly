@@ -41,11 +41,6 @@ python -m unittest discover -s src/tests -p test_*.py  # run all tests in src/te
 <!-- TODO: add a sample image -->
 <!-- ![sample](./resources/img/sample.png) -->
 
-## References
-- [Interactive IS (cv)](https://docs.opencv.org/4.x/d9/df5/tutorial_js_intelligent_scissors.html) Interactive Intelligent Scissors using OpenCV
-- [Intelligent Scissors for Image Composition](./log/IS%20for%20image%20composition.pdf) (Original paper)
-- [Interactive Segmentation with Intelligent Scissors](./log/interactive%20segmentation%20with%20IS.pdf)  (Extended paper)
-
 ## [License](./LICENSE)
 
 This project is licensed under the [MIT License](./LICENSE).
