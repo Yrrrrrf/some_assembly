@@ -2,14 +2,14 @@
 from dataclasses import dataclass
 
 # third-party imports
-from PyQt6.QtWidgets import QScrollArea, QTabWidget, QPushButton, QWidget
-from PyQt6.QtGui import QIcon, QPainter, QColor, QPen
-from PyQt6.QtCore import QSize, Qt
-from numpy import add
+from PyQt6.QtWidgets import *
+from PyQt6.QtGui import *
+from PyQt6.QtCore import *
 
 # local imports
 from config.globals import Assets
 from components.vistualizer import Visualizer
+from components.code_editor import CodeEditor
 
 
 @dataclass
@@ -62,13 +62,19 @@ class Workspace(QTabWidget):
         '''
         # * Instantiate the visualizer, the scroll zone & the scroll area
         some_widget = QWidget()
-        
         some_widget.setProperty('class', 'some_widget')
+        some_widget.setLayout(QHBoxLayout())
 
         visualizer = Visualizer(some_widget)
-
+        v2 = CodeEditor(some_widget)
+        
+        # * Add the visualizer to the scroll area
+        some_widget.layout().addWidget(visualizer)
+        some_widget.layout().addWidget(v2)
+        
         # * Add the scroll area to the tab widget
         self.addTab(some_widget, f'New_{self.count()+1}')
+
         # * Add the visualizer to the list of visualizers
         self.v_list.append(visualizer)
 

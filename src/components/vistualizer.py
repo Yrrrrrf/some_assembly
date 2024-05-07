@@ -14,33 +14,27 @@ from config.globals import Assets
 
 
 @dataclass
-class Visualizer(QLabel):
+class Visualizer(QWidget):
     '''
     A QLabel-derived class that acts as a visualizer for displaying the contents of a file.
     It includes a QTextEdit within which the file's contents are displayed.
     '''
 
-    def __init__(self, workspace: QWidget, width: int = 512, height: int = 512):
+    def __init__(self, workspace: QWidget):
         super().__init__(workspace)
-
         self.setProperty('class', 'visualizer')
-        self.setCursor(QCursor(Qt.CursorShape.CrossCursor))
-
-        self.setFixedSize(width, height)
-        # self.setMargin(margin)  # Not uses because the QMargins can't be manipulated (paint on them)
-
         self.init_ui()
 
 
     def init_ui(self):
         ''' Initializes the user interface components inside the visualizer. '''
         self.text_edit: QTextEdit = QTextEdit(self)
-        self.text_edit.setFont(QFont('Cascadia Code', 20))
+        self.text_edit.setFont(QFont('Cascadia Code', 12))
         layout: QVBoxLayout = QVBoxLayout(self)
         layout.addWidget(self.text_edit)
         self.setLayout(layout)
 
-        set_content(self.text_edit, 'The pinchis...')
+        self.set_content('The pinchis...')
 
     
     def open_file(self):
@@ -55,10 +49,10 @@ class Visualizer(QLabel):
             case '':
                 print('\033[31mError: No file selected!\x1B[37m')
                 QMessageBox.critical(self, 'Error', 'Please select a file.')
-            case _: set_content(read_file(file_path))
+            case _: self.set_content(read_file(file_path))
 
-def set_content(text_edit: QTextEdit, text: str):
-    text_edit.setPlainText(text)
+    def set_content(self, text: str):
+        self.text_edit.setPlainText(text)
 
 def read_file(file_path: str) -> str:
     file: QFile = QFile(file_path)

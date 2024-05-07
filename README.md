@@ -38,8 +38,7 @@ To be sure that everything is working as expected, run the tests.
 python -m unittest discover -s src/tests -p test_*.py  # run all tests in src/tests
 ```
 
-<!-- TODO: add a sample image -->
-<!-- ![sample](./resources/img/sample.png) -->
+![sample](./resources/img/sample.png)
 
 ## [License](./LICENSE)
 
